@@ -1,0 +1,48 @@
+Install Jenkins on Ubuntu
+(This is for production/real-time applications)
+
+Step 1: Install Java
+sh
+Copy
+Edit
+sudo apt update
+sudo apt install openjdk-17-jre-headless
+Verify Java installation:
+
+sh
+Copy
+Edit
+java -version
+Step 2: Add Jenkins Repository Key
+sh
+Copy
+Edit
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+Step 3: Add Jenkins Repository to the System
+sh
+Copy
+Edit
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+Step 4: Install Jenkins
+sh
+Copy
+Edit
+sudo apt update
+sudo apt install jenkins
+Step 5: Verify Jenkins Installation
+sh
+Copy
+Edit
+systemctl status jenkins
+Step 6: Access Jenkins
+Once Jenkins is running, open your browser and go to:
+
+http://localhost:8080 (if running locally)
+
+http://<VM_IP>:8080 (if running on a virtual machine)
+
+Step 7: Get Initial Admin Password
+sh
+Copy
+Edit
+cat /var/lib/jenkins/secrets/initialAdminPassword
